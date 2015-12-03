@@ -32,11 +32,8 @@ class ViewController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		let margin: CGFloat = 2;
-		colorView.frame = CGRect(
-			x: view.bounds.origin.x + margin,
-			y: view.bounds.origin.x + margin,
-			width: view.bounds.size.width - margin*2,
-			height: view.bounds.size.height - margin*2)
+		colorView.frame = view.bounds
+		colorView.frame.pushSide(all: margin)
 	}
 
 
