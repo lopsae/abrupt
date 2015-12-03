@@ -18,11 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window!.backgroundColor = UIColor.whiteColor()
 
-    let viewController = ViewController(color: UIColor.grayColor())
-    window!.rootViewController = viewController
+    let navController = UINavigationController()
+
+    let initialViewController = ViewController(color: UIColor.grayColor())
+    initialViewController.navigationItem.title = "Initial"
+    initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+      title: "Present",
+      style: .Plain,
+      target: nil,
+      action: nil)
+
+//    let pushViewController = ViewController(color: UIColor.redColor())
+//    let presentViewController = ViewController(color: UIColor.magentaColor())
+
+    navController.pushViewController(initialViewController, animated: false)
+
+    window!.rootViewController = navController
     window!.makeKeyAndVisible()
     return true
   }
+
 
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
