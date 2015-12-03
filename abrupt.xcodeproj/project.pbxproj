@@ -39,7 +39,10 @@
 				7BD526511C0FA33E00C267F5 /* abrupt */,
 				7BD526501C0FA33E00C267F5 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
 		};
 		7BD526501C0FA33E00C267F5 /* Products */ = {
 			isa = PBXGroup;
@@ -58,7 +61,6 @@
 				7BD5265E1C0FA33E00C267F5 /* Info.plist */,
 				7B35D50B1C0FBEA8001861CE /* Launch.xib */,
 			);
-			name = abrupt;
 			path = abrupt;
 			sourceTree = "<group>";
 		};
