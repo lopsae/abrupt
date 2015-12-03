@@ -12,10 +12,20 @@ class ViewController: UIViewController {
 
   var colorView: UIView!
 
+
+  init(color: UIColor) {
+    super.init(nibName: nil, bundle: nil)
+    colorView = UIView()
+    colorView.backgroundColor = color
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
+
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    colorView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-    colorView.backgroundColor = UIColor.redColor()
     view.addSubview(colorView)
   }
 
