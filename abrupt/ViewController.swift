@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	private(set)
 	var colorView: UIView!
 
 

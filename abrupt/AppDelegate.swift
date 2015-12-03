@@ -13,36 +13,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var navController: UINavigationController!
-	var pushViewController : ViewController!
+	var pushedViewController: ViewController!
+	var presentedViewController: ViewController!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		window = UIWindow(frame: UIScreen.mainScreen().bounds)
-		window!.backgroundColor = UIColor.whiteColor()
-
-		navController = UINavigationController()
-
+		// Initial view
 		let initialViewController = ViewController(color: UIColor.grayColor())
 		initialViewController.navigationItem.title = "Initial"
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
 			style: .Plain,
 			target: self,
-			action: "pushView")
+			action: "pushAction")
 
-		pushViewController = ViewController(color: UIColor.redColor())
-//		let presentViewController = ViewController(color: UIColor.magentaColor())
+		let presentGesture = UITapGestureRecognizer(
+			target: self,
+			action: "presentAction")
+		initialViewController.colorView.addGestureRecognizer(presentGesture)
 
+		// Pusheded view
+		pushedViewController = ViewController(color: UIColor.redColor())
+		pushedViewController.navigationItem.title = "Pushed"
+		pushedViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+			title: "Pop",
+			style: .Plain,
+			target: self,
+			action: "popAction")
+
+		// Presented view
+		presentedViewController = ViewController(color: UIColor.magentaColor())
+		let dismissGesture = UITapGestureRecognizer(
+			target: self,
+			action: "dismissAction")
+		presentedViewController.colorView.addGestureRecognizer(dismissGesture)
+
+		// Navigation
+		navController = UINavigationController()
 		navController.pushViewController(initialViewController, animated: false)
 
+		// Window
+		window = UIWindow(frame: UIScreen.mainScreen().bounds)
+		window!.backgroundColor = UIColor.whiteColor()
 		window!.rootViewController = navController
 		window!.makeKeyAndVisible()
 		return true
 	}
 
 
-	func pushView() {
-		navController.pushViewController(pushViewController, animated: true)
+	func pushAction() {
+		navController.pushViewController(pushedViewController, animated: true)
+	}
+
+
+	func popAction() {
+		navController.popViewControllerAnimated(true)
+	}
+
+
+	func presentAction() {
+		navController.presentViewController(presentedViewController,
+			animated: true,
+			completion: nil)
+	}
+
+
+	func dismissAction() {
+		navController.dismissViewControllerAnimated(true,
+			completion: nil)
 	}
 
 
