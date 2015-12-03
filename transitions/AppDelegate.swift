@@ -12,23 +12,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var navController: UINavigationController!
+  var pushViewController : ViewController!
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window!.backgroundColor = UIColor.whiteColor()
 
-    let navController = UINavigationController()
+    navController = UINavigationController()
 
     let initialViewController = ViewController(color: UIColor.grayColor())
     initialViewController.navigationItem.title = "Initial"
     initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
-      title: "Present",
+      title: "Push",
       style: .Plain,
-      target: nil,
-      action: nil)
+      target: self,
+      action: "pushView")
 
-//    let pushViewController = ViewController(color: UIColor.redColor())
+    pushViewController = ViewController(color: UIColor.redColor())
 //    let presentViewController = ViewController(color: UIColor.magentaColor())
 
     navController.pushViewController(initialViewController, animated: false)
@@ -36,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window!.rootViewController = navController
     window!.makeKeyAndVisible()
     return true
+  }
+
+
+  func pushView() {
+    navController.pushViewController(pushViewController, animated: true)
   }
 
 
