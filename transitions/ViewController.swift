@@ -28,7 +28,7 @@ class ViewController: UIViewController {
       width: view.bounds.size.width - margin*2,
       height: view.bounds.size.height - margin*2)
   }
-  
+
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
