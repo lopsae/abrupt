@@ -59,7 +59,7 @@
 				7B35D50B1C0FBEA8001861CE /* Launch.xib */,
 			);
 			name = abrupt;
-			path = transitions;
+			path = abrupt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,7 +78,7 @@
 			dependencies = (
 			);
 			name = abrupt;
-			productName = transitions;
+			productName = abrupt;
 			productReference = 7BD5264F1C0FA33E00C267F5 /* abrupt.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -227,7 +227,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = transitions/Info.plist;
+				INFOPLIST_FILE = abrupt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lopsae.abrupt;
 				PRODUCT_NAME = abrupt;
@@ -238,7 +238,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = transitions/Info.plist;
+				INFOPLIST_FILE = abrupt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lopsae.abrupt;
 				PRODUCT_NAME = abrupt;
