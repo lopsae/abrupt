@@ -13,6 +13,7 @@
 		7BD5265A1C0FA33E00C267F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD526591C0FA33E00C267F5 /* Assets.xcassets */; };
 		7BEC68521C10EC210015695D /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC68511C10EC210015695D /* CGExtension.swift */; };
 		7BEC68541C110B130015695D /* PresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC68531C110B130015695D /* PresentAnimationController.swift */; };
+		7BEC68571C1247E60015695D /* BlockSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC68561C1247E60015695D /* BlockSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7BD5265E1C0FA33E00C267F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BEC68511C10EC210015695D /* CGExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGExtension.swift; path = extensions/CGExtension.swift; sourceTree = "<group>"; };
 		7BEC68531C110B130015695D /* PresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimationController.swift; sourceTree = "<group>"; };
+		7BEC68561C1247E60015695D /* BlockSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockSelector.swift; path = blocks/BlockSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				7BD526591C0FA33E00C267F5 /* Assets.xcassets */,
 				7BD5265E1C0FA33E00C267F5 /* Info.plist */,
 				7B35D50B1C0FBEA8001861CE /* Launch.xib */,
+				7BEC68551C1247CE0015695D /* blocks */,
 				7BEC68501C10EB8E0015695D /* extensions */,
 			);
 			path = abrupt;
@@ -76,6 +79,14 @@
 				7BEC68511C10EC210015695D /* CGExtension.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		7BEC68551C1247CE0015695D /* blocks */ = {
+			isa = PBXGroup;
+			children = (
+				7BEC68561C1247E60015695D /* BlockSelector.swift */,
+			);
+			name = blocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BEC68571C1247E60015695D /* BlockSelector.swift in Sources */,
 				7BEC68541C110B130015695D /* PresentAnimationController.swift in Sources */,
 				7BD526551C0FA33E00C267F5 /* ViewController.swift in Sources */,
 				7BEC68521C10EC210015695D /* CGExtension.swift in Sources */,

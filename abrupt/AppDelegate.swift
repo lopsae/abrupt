@@ -13,20 +13,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var navController: UINavigationController!
+
 	var pushedViewController: ViewController!
 	var presentedViewController: ViewController!
 	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
+
+	var pushBlock: BlockSelector!
+	var popBlock: BlockSelector!
+	var presentBlock: BlockSelector!
+	var dismissBlock: BlockSelector!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
 		let initialViewController = ViewController(color: UIColor.grayColor())
 		initialViewController.navigationItem.title = "Initial"
+		pushBlock = BlockSelector(block: {
+			self.navController.pushViewController(self.pushedViewController, animated: true)
+		})
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
 			style: .Plain,
-			target: self,
-			action: "pushAction")
+			target: pushBlock,
+			action: pushBlock.selector())
 
 		let presentGesture = UITapGestureRecognizer(
 			target: self,
@@ -62,11 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window!.rootViewController = navController
 		window!.makeKeyAndVisible()
 		return true
-	}
-
-
-	func pushAction() {
-		navController.pushViewController(pushedViewController, animated: true)
 	}
 
 
