@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var navController: UINavigationController!
 	var pushedViewController: ViewController!
 	var presentedViewController: ViewController!
+	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -47,6 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			target: self,
 			action: "dismissAction")
 		presentedViewController.colorView.addGestureRecognizer(dismissGesture)
+
+		presentedTransitioningDelegate = PresentAnimationController()
+		presentedViewController.transitioningDelegate = presentedTransitioningDelegate
 
 		// Navigation
 		navController = UINavigationController()

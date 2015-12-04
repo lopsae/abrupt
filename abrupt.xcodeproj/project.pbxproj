@@ -12,6 +12,7 @@
 		7BD526551C0FA33E00C267F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD526541C0FA33E00C267F5 /* ViewController.swift */; };
 		7BD5265A1C0FA33E00C267F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD526591C0FA33E00C267F5 /* Assets.xcassets */; };
 		7BEC68521C10EC210015695D /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC68511C10EC210015695D /* CGExtension.swift */; };
+		7BEC68541C110B130015695D /* PresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC68531C110B130015695D /* PresentAnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7BD526591C0FA33E00C267F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BD5265E1C0FA33E00C267F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BEC68511C10EC210015695D /* CGExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGExtension.swift; path = extensions/CGExtension.swift; sourceTree = "<group>"; };
+		7BEC68531C110B130015695D /* PresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				7BD526521C0FA33E00C267F5 /* AppDelegate.swift */,
 				7BD526541C0FA33E00C267F5 /* ViewController.swift */,
+				7BEC68531C110B130015695D /* PresentAnimationController.swift */,
 				7BD526591C0FA33E00C267F5 /* Assets.xcassets */,
 				7BD5265E1C0FA33E00C267F5 /* Info.plist */,
 				7B35D50B1C0FBEA8001861CE /* Launch.xib */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BEC68541C110B130015695D /* PresentAnimationController.swift in Sources */,
 				7BD526551C0FA33E00C267F5 /* ViewController.swift in Sources */,
 				7BEC68521C10EC210015695D /* CGExtension.swift in Sources */,
 				7BD526531C0FA33E00C267F5 /* AppDelegate.swift in Sources */,
