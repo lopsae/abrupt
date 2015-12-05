@@ -18,9 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var presentedViewController: ViewController!
 	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
-	var pushBlock: BlockSelector!
 	var popBlock: BlockSelector!
-	var presentBlock: BlockSelector!
 	var dismissBlock: BlockSelector!
 
 
@@ -28,20 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Initial view
 		let initialViewController = ViewController(color: UIColor.grayColor())
 		initialViewController.navigationItem.title = "Initial"
-		pushBlock = BlockSelector(block: {
-			self.navController.pushViewController(self.pushedViewController, animated: true)
-		})
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
-			style: .Plain,
-			block: pushBlock)
+			style: .Plain)
+		{
+			self.navController.pushViewController(self.pushedViewController, animated: true)
+		}
 
-		presentBlock = BlockSelector(block: {
+		let presentGesture = UITapGestureRecognizer()
+		{
 			self.navController.presentViewController(self.presentedViewController,
 				animated: true,
 				completion: nil)
-		})
-		let presentGesture = UITapGestureRecognizer(block: presentBlock)
+		}
 		initialViewController.colorView.addGestureRecognizer(presentGesture)
 
 		// Pushed view
