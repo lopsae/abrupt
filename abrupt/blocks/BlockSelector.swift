@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias EmptyBlockType = () -> ()
 
@@ -38,5 +39,24 @@ class BlockSelector {
 		return "performBlock"
 	}
 
+}
 
+
+extension UIBarButtonItem {
+	convenience init(title: String, style: UIBarButtonItemStyle, block: BlockSelector) {
+		self.init()
+		self.title = title
+		self.style = style
+		self.target = block
+		self.action = block.selector()
+	}
+}
+
+
+extension UIGestureRecognizer {
+	convenience init(block: BlockSelector) {
+		self.init(
+			target: block,
+			action: block.selector())
+	}
 }

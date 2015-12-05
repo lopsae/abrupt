@@ -34,15 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
 			style: .Plain,
-			target: pushBlock,
-			action: pushBlock.selector())
+			block: pushBlock)
 
-		let presentGesture = UITapGestureRecognizer(
-			target: self,
-			action: "presentAction")
+		presentBlock = BlockSelector(block: {
+			self.navController.presentViewController(self.presentedViewController,
+				animated: true,
+				completion: nil)
+		})
+		let presentGesture = UITapGestureRecognizer(block: presentBlock)
 		initialViewController.colorView.addGestureRecognizer(presentGesture)
 
-		// Pusheded view
+		// Pushed view
 		pushedViewController = ViewController(color: UIColor.redColor())
 		pushedViewController.navigationItem.title = "Pushed"
 		pushedViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -76,13 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func popAction() {
 		navController.popViewControllerAnimated(true)
-	}
-
-
-	func presentAction() {
-		navController.presentViewController(presentedViewController,
-			animated: true,
-			completion: nil)
 	}
 
 
