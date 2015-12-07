@@ -26,7 +26,7 @@ class PresentAnimationController: NSObject,
 
 
 	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-		return 2.5
+		return 0.5
 	}
 
 
@@ -40,8 +40,6 @@ class PresentAnimationController: NSObject,
 		toViewController.view.frame = CGRectOffset(finalFrame, 0, screenBounds.h)
 		container.addSubview(toViewController.view!)
 
-		let duration = transitionDuration(context)
-
 		let animationsBlock = {
 			fromViewController.view.alpha = 0.5
 			toViewController.view.frame = finalFrame
@@ -52,11 +50,11 @@ class PresentAnimationController: NSObject,
 			fromViewController.view.alpha = 1
 		}
 
-		UIView.animateWithDuration(duration,
+		UIView.animateWithDuration(transitionDuration(context),
 			delay: 0,
-			usingSpringWithDamping: 0.5,
+			usingSpringWithDamping: 1,
 			initialSpringVelocity: 0.5,
-			options: .CurveLinear,
+			options: .TransitionNone,
 			animations: animationsBlock,
 			completion: completionBlock)
 	}
