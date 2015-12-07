@@ -33,8 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			self.navController.pushViewController(self.pushedViewController, animated: true)
 		}
 
-		let presentGesture = UITapGestureRecognizer()
-		{
+		let presentGesture = UITapGestureRecognizer() {
 			self.navController.presentViewController(self.presentedViewController,
 				animated: true,
 				completion: nil)
@@ -46,15 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		pushedViewController.navigationItem.title = "Pushed"
 		pushedViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Pop",
-			style: .Plain,
-			target: self,
-			action: "popAction")
+			style: .Plain)
+		{
+			self.navController.popViewControllerAnimated(true)
+		}
 
 		// Presented view
 		presentedViewController = ViewController(color: UIColor.magentaColor())
-		let dismissGesture = UITapGestureRecognizer(
-			target: self,
-			action: "dismissAction")
+		let dismissGesture = UITapGestureRecognizer(){
+			self.navController.dismissViewControllerAnimated(true,
+				completion: nil)
+		}
 		presentedViewController.colorView.addGestureRecognizer(dismissGesture)
 
 		presentedTransitioningDelegate = PresentAnimationController()
@@ -70,17 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window!.rootViewController = navController
 		window!.makeKeyAndVisible()
 		return true
-	}
-
-
-	func popAction() {
-		navController.popViewControllerAnimated(true)
-	}
-
-
-	func dismissAction() {
-		navController.dismissViewControllerAnimated(true,
-			completion: nil)
 	}
 
 
