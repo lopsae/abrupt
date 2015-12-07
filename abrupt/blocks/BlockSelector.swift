@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-typealias EmptyBlockType = () -> ()
+typealias EmptyBlockType = () -> Void
 
 class BlockSelector {
 
