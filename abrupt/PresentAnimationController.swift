@@ -25,15 +25,25 @@ class PresentAnimationController: NSObject,
 	}
 
 
+	func animationControllerForDismissedController(
+		dismissed: UIViewController)
+		-> UIViewControllerAnimatedTransitioning?
+	{
+		return self
+	}
+
+
 	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
 		return 0.5
 	}
 
 
 	func animateTransition(context: UIViewControllerContextTransitioning) {
-		let fromViewController = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
+		let fromView = context.viewForKey(UITransitionContextFromViewKey)!
 		let container = context.containerView()!
+
+		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
+		let toView = toViewController.view
 
 		let screenBounds = UIScreen.mainScreen().bounds
 		let finalFrame = context.finalFrameForViewController(toViewController)
@@ -42,17 +52,17 @@ class PresentAnimationController: NSObject,
 		initialFrame.centerY = screenBounds.centerY
 		initialFrame.moveOutside(wSideRect: screenBounds)
 
-		toViewController.view.frame = initialFrame
-		container.addSubview(toViewController.view!)
+		toView.frame = initialFrame
+		container.addSubview(toView)
 
 		let animationsBlock = {
-			fromViewController.view.alpha = 0.5
-			toViewController.view.frame = finalFrame
+			fromView.alpha = 0.5
+			toView.frame = finalFrame
 		}
 
 		let completionBlock = { (finished: Bool) in
+			fromView.alpha = 1
 			context.completeTransition(true)
-			fromViewController.view.alpha = 1
 		}
 
 		UIView.animateWithDuration(transitionDuration(context),
