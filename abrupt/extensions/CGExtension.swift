@@ -82,6 +82,18 @@ extension CGRect {
 	}
 
 
+	var center: CGPoint {
+		get {
+			return CGPoint(x: midX, y: midY)
+		}
+
+		mutating set {
+			centerX = newValue.x
+			centerY = newValue.y
+		}
+	}
+
+
 	// The `side` methods modify the side of the rect by their name:
 	// * Pushing `x` and `y` increases their value, and decreases `w` and `h`
 	// * Pushing `w` and `h` decreases their value

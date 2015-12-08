@@ -45,25 +45,30 @@ class CenterZoomPresentAnimationController: NSObject,
 		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
 		let toView = toViewController.view
 
-		let initialFromFrame = context.initialFrameForViewController(fromViewController)
-		let finalToFrame = context.finalFrameForViewController(toViewController)
+		let fromInitialFrame = context.initialFrameForViewController(fromViewController)
+		let toFinalFrame = context.finalFrameForViewController(toViewController)
 
-		toView.frame = finalToFrame
+		toView.frame = toFinalFrame
 		toView.alpha = 0.5
 
 		let screenBounds = UIScreen.mainScreen().bounds
-		let finalFromFrame = CGRectInset(screenBounds, screenBounds.width/2.0, screenBounds.height/2.0)
+		let fromFinalFrame = CGRect(origin: screenBounds.center, size: CGSizeZero)
+
+		let fromSnapshot = fromView.snapshotViewAfterScreenUpdates(false)
+		fromSnapshot.frame = fromInitialFrame
 
 		let container = context.containerView()!
-		container.insertSubview(toView, belowSubview: fromView)
+		container.addSubview(fromSnapshot)
+		fromViewController.removeFromParentViewController()
+		container.insertSubview(toView, belowSubview: fromSnapshot)
 
 		let animationsBlock = {
 			toView.alpha = 1.0
-			fromView.frame = finalFromFrame
+			fromSnapshot.frame = fromFinalFrame
 		}
 
 		let completionBlock = { (finished: Bool) in
-			fromView.frame = initialFromFrame
+			fromSnapshot.removeFromSuperview()
 			context.completeTransition(true)
 		}
 
