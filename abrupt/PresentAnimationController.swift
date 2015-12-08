@@ -33,11 +33,16 @@ class PresentAnimationController: NSObject,
 	func animateTransition(context: UIViewControllerContextTransitioning) {
 		let fromViewController = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
 		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-		let finalFrame = context.finalFrameForViewController(toViewController)
 		let container = context.containerView()!
-		let screenBounds = UIScreen.mainScreen().bounds
 
-		toViewController.view.frame = CGRectOffset(finalFrame, 0, screenBounds.h)
+		let screenBounds = UIScreen.mainScreen().bounds
+		let finalFrame = context.finalFrameForViewController(toViewController)
+
+		var initialFrame = finalFrame
+		initialFrame.centerX = screenBounds.centerX
+		initialFrame.moveOutside(screenBounds)
+
+		toViewController.view.frame = initialFrame
 		container.addSubview(toViewController.view!)
 
 		let animationsBlock = {

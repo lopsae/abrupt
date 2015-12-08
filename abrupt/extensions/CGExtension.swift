@@ -60,6 +60,28 @@ extension CGRect {
 	}
 
 
+	var centerX: CGFloat {
+		get {
+			return midX
+		}
+
+		mutating set {
+			origin.x = newValue - (w / 2.0)
+		}
+	}
+
+
+	var centerY: CGFloat {
+		get {
+			return midY
+		}
+
+		mutating set {
+			origin.y = newValue - (h / 2.0)
+		}
+	}
+
+
 	// The `side` methods modify the side of the rect by their name:
 	// * Pushing `x` and `y` increases their value, and decreases `w` and `h`
 	// * Pushing `w` and `h` decreases their value
@@ -128,20 +150,27 @@ extension CGRect {
 	/// previous center coordinate.
 	mutating func pushSide(all push: CGFloat) {
 		let previousCenter = CGPoint(x: midX, y: midY)
-		if (w > push * 2) {
+		if (w > push * 2.0) {
 			x += push;
-			w -= push * 2;
+			w -= push * 2.0;
 		} else {
 			x = previousCenter.x
 			w = 0
 		}
-		if (h > push * 2) {
+		if (h > push * 2.0) {
 			y += push;
-			h -= push * 2;
+			h -= push * 2.0;
 		} else {
 			y = previousCenter.y
 			w = 0
 		}
+	}
+
+
+	/// Moves the instance outside of the given rect so that the instance `y`
+	/// side is touching `h` side of the `hSideRect` rect.
+	mutating func moveOutside(hSideRect:CGRect) {
+		y = hSideRect.y + hSideRect.h
 	}
 
 }
