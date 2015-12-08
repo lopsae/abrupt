@@ -39,8 +39,8 @@ class PresentAnimationController: NSObject,
 		let finalFrame = context.finalFrameForViewController(toViewController)
 
 		var initialFrame = finalFrame
-		initialFrame.centerX = screenBounds.centerX
-		initialFrame.moveOutside(screenBounds)
+		initialFrame.centerY = screenBounds.centerY
+		initialFrame.moveOutside(wSideRect: screenBounds)
 
 		toViewController.view.frame = initialFrame
 		container.addSubview(toViewController.view!)

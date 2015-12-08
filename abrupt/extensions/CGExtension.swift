@@ -168,9 +168,18 @@ extension CGRect {
 
 
 	/// Moves the instance outside of the given rect so that the instance `y`
-	/// side is touching `h` side of the `hSideRect` rect.
-	mutating func moveOutside(hSideRect:CGRect) {
-		y = hSideRect.y + hSideRect.h
+	/// side is touching `h` side of the `hSideRect` rect. This method will only
+	/// modify the `y` property of the instance.
+	mutating func moveOutside(hSideRect sideRect:CGRect) {
+		y = sideRect.y + sideRect.height
+	}
+
+
+	/// Moves the instance outside of the given rect so that the instance `x`
+	/// side is touching `w` side of the `wSideRect` rect. This method will only
+	/// modify the `y` property of the instance.
+	mutating func moveOutside(wSideRect sideRect:CGRect) {
+		x = sideRect.x + sideRect.width
 	}
 
 }
