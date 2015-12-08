@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var navController: UINavigationController!
+	var navControllerDelegate: UINavigationControllerDelegate!
 
 	var pushedViewController: ViewController!
 	var presentedViewController: ViewController!
@@ -60,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		presentedViewController.transitioningDelegate = presentedTransitioningDelegate
 
 		// Navigation
+		navControllerDelegate = CubeFlipPresentAnimationController()
 		navController = UINavigationController()
+		navController.delegate = navControllerDelegate
 		navController.pushViewController(initialViewController, animated: false)
 
 		// Window
