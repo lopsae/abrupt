@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var presentedViewController: ViewController!
 	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
-	var popBlock: BlockSelector!
-	var dismissBlock: BlockSelector!
-
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
