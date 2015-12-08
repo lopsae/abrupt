@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		presentedViewController.transitioningDelegate = presentedTransitioningDelegate
 
 		// Navigation
-		navControllerDelegate = CubeFlipPresentAnimationController()
+		navControllerDelegate = CubeFlipNavigationAnimationController()
 		navController = UINavigationController()
 		navController.delegate = navControllerDelegate
 		navController.pushViewController(initialViewController, animated: false)

@@ -1,5 +1,5 @@
 //
-//  CubeFlipPresentAnimationController
+//  CubeFlipNavigationAnimationController
 //  abrupt
 //
 //  Created by Maic Lopez Saenz.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CubeFlipPresentAnimationController: NSObject,
+class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransition,
 	UIViewControllerAnimatedTransitioning,
 	UINavigationControllerDelegate
 {
