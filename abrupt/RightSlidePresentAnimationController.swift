@@ -1,15 +1,15 @@
 //
-//  PresentAnimationController.swift
+//  RightSlidePresentAnimationController
 //  abrupt
 //
-//  Created by Maic Lopez on 12/3/15.
-//  Copyright © 2015 Maic Lopez. All rights reserved.
+//  Created by Maic Lopez Saenz on 12/3/15.
+//  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
 //
 
 import UIKit
 
 
-class PresentAnimationController: NSObject,
+class RightSlidePresentAnimationController: NSObject,
 	UIViewControllerAnimatedTransitioning,
 	UIViewControllerTransitioningDelegate
 {
