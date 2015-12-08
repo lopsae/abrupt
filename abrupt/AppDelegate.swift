@@ -58,7 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 		presentedViewController.colorView.addGestureRecognizer(dismissGesture)
 
-		presentedTransitioningDelegate = RightSlidePresentAnimationController()
+//		presentedTransitioningDelegate = RightSlidePresentAnimationController()
+		presentedTransitioningDelegate = CenterZoomPresentAnimationController()
 		presentedViewController.transitioningDelegate = presentedTransitioningDelegate
 
 		// Navigation
