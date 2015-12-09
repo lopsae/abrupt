@@ -178,12 +178,20 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 			context.completeTransition(completed)
 		}
 
-		UIView.animateWithDuration(transitionDuration(context),
-			delay: 0,
-			usingSpringWithDamping: 1,
-			initialSpringVelocity: 0.5,
-			options: .TransitionNone,
-			animations: animationsBlock,
-			completion: completionBlock)
+		if context.isInteractive() {
+			UIView.animateWithDuration(transitionDuration(context),
+				delay: 0,
+				options: .CurveLinear,
+				animations: animationsBlock,
+				completion: completionBlock)
+		} else {
+			UIView.animateWithDuration(transitionDuration(context),
+				delay: 0,
+				usingSpringWithDamping: 1,
+				initialSpringVelocity: 0.5,
+				options: .TransitionNone,
+				animations: animationsBlock,
+				completion: completionBlock)
+		}
 	}
 }
