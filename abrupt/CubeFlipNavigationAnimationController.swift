@@ -14,18 +14,15 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	UINavigationControllerDelegate
 {
 
-	enum Direction {
-		case Right, Left
-	}
-
+	enum Direction {	case Right, Left}
 	var direction = Direction.Right
 
 	let navigationController: UINavigationController
 
-	// Interactive control
 	var shouldCompleteTransition = false
 	var transitionInProgress = false
 	let panGesture: UIPanGestureRecognizer
+
 
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -78,14 +75,20 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 
 
 	func handlePanGesture() {
+		if !transitionInProgress {
+			let viewCount = navigationController.viewControllers.count
+			if panGesture.state == .Began && viewCount > 1 {
+				// Start the pop transition!
+				transitionInProgress = true
+				navigationController.popViewControllerAnimated(true)
+				return
+			}
+		}
+
 		let parentView = panGesture.view!.superview!
 		let viewTranslation = panGesture.translationInView(parentView)
 
 		switch panGesture.state {
-			case .Began:
-				transitionInProgress = true
-				navigationController.popViewControllerAnimated(true)
-
 			case .Changed:
 				let mysteryConstant = CGFloat(fminf(fmaxf(Float(viewTranslation.x / 200.0), 0.0), 1.0))
 				shouldCompleteTransition = mysteryConstant > 0.5
@@ -103,7 +106,7 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 					cancelInteractiveTransition()
 				}
 
-			default:
+			case .Began, .Failed, .Possible:
 				break
 		}
 	}
