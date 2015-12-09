@@ -84,9 +84,14 @@ extension UIBarButtonItem {
 extension UIGestureRecognizer {
 	convenience init(action: EmptyBlockType) {
 		self.init()
+		addAction(action)
+	}
 
+
+	func addAction(action: EmptyBlockType) {
 		let block = BlockSelector(block: action)
 		BlockSelector.keep(block, weakObject: self)
 		addTarget(block, action: block.selector())
 	}
+	
 }

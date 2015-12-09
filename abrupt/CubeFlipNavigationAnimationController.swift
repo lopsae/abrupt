@@ -20,6 +20,21 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 
 	var direction = Direction.Right
 
+	let navigationController: UINavigationController
+
+	// Interactive control
+	var shouldCompleteTransition = false
+	var transitionInProgress = false
+	let panGesture: UIPanGestureRecognizer
+
+	init(navigationController: UINavigationController) {
+		self.navigationController = navigationController
+		self.panGesture = UIPanGestureRecognizer()
+		super.init()
+
+		panGesture.addAction(handlePanGesture)
+	}
+
 
 	func navigationController(navigationController: UINavigationController,
 		animationControllerForOperation operation: UINavigationControllerOperation,
@@ -27,12 +42,70 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 		toViewController toVC: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
-		if operation == .Push {
-			direction = .Right
-		} else {
-			direction = .Left
+		switch operation {
+			case .Push:
+				direction = .Right
+
+			case .Pop:
+				direction = .Left
+
+			case .None:
+				break
 		}
 		return self;
+	}
+
+
+	func navigationController(navigationController: UINavigationController,
+		interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning)
+		-> UIViewControllerInteractiveTransitioning?
+	{
+
+		if transitionInProgress {
+			return self
+		}
+
+		return nil
+	}
+
+
+	func navigationController(navigationController: UINavigationController,
+		didShowViewController viewController: UIViewController,
+		animated: Bool)
+	{
+		viewController.view.addGestureRecognizer(panGesture)
+	}
+
+
+	func handlePanGesture() {
+		let parentView = panGesture.view!.superview!
+		let viewTranslation = panGesture.translationInView(parentView)
+
+		switch panGesture.state {
+			case .Began:
+				transitionInProgress = true
+				navigationController.popViewControllerAnimated(true)
+
+			case .Changed:
+				let mysteryConstant = CGFloat(fminf(fmaxf(Float(viewTranslation.x / 200.0), 0.0), 1.0))
+				shouldCompleteTransition = mysteryConstant > 0.5
+				updateInteractiveTransition(mysteryConstant)
+
+			case .Cancelled:
+				transitionInProgress = false;
+				cancelInteractiveTransition()
+
+			case .Ended:
+				transitionInProgress = false;
+				if shouldCompleteTransition {
+					finishInteractiveTransition()
+				} else {
+					cancelInteractiveTransition()
+				}
+
+			default:
+				break
+		}
 	}
 
 
