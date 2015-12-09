@@ -90,9 +90,10 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 
 		switch panGesture.state {
 			case .Changed:
-				let mysteryConstant = CGFloat(fminf(fmaxf(Float(viewTranslation.x / 200.0), 0.0), 1.0))
-				shouldCompleteTransition = mysteryConstant > 0.5
-				updateInteractiveTransition(mysteryConstant)
+				let screenWidth = UIScreen.mainScreen().bounds.width
+				let completedRatio = cgclamp(viewTranslation.x / screenWidth, max:1.0, min: 0.0)
+				shouldCompleteTransition = completedRatio > 0.5
+				updateInteractiveTransition(completedRatio)
 
 			case .Cancelled:
 				transitionInProgress = false;
