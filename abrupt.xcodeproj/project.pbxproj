@@ -10,6 +10,7 @@
 		7B35D50C1C0FBEA8001861CE /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B35D50B1C0FBEA8001861CE /* Launch.xib */; };
 		7B4FA84B1C167320007EE86F /* CenterZoomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA84A1C167320007EE86F /* CenterZoomPresentAnimationController.swift */; };
 		7B4FA84D1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */; };
+		7B4FA8631C1A4871007EE86F /* WeakKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA8621C1A4871007EE86F /* WeakKeeper.swift */; };
 		7BD526531C0FA33E00C267F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD526521C0FA33E00C267F5 /* AppDelegate.swift */; };
 		7BD526551C0FA33E00C267F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD526541C0FA33E00C267F5 /* ViewController.swift */; };
 		7BD5265A1C0FA33E00C267F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD526591C0FA33E00C267F5 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		7B35D50B1C0FBEA8001861CE /* Launch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
 		7B4FA84A1C167320007EE86F /* CenterZoomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterZoomPresentAnimationController.swift; sourceTree = "<group>"; };
 		7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeFlipNavigationAnimationController.swift; sourceTree = "<group>"; };
+		7B4FA8621C1A4871007EE86F /* WeakKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakKeeper.swift; sourceTree = "<group>"; };
 		7BD5264F1C0FA33E00C267F5 /* abrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = abrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD526521C0FA33E00C267F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BD526541C0FA33E00C267F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				7BD526521C0FA33E00C267F5 /* AppDelegate.swift */,
 				7BD526541C0FA33E00C267F5 /* ViewController.swift */,
+				7B4FA8621C1A4871007EE86F /* WeakKeeper.swift */,
 				7BEC68531C110B130015695D /* RightSlidePresentAnimationController.swift */,
 				7B4FA84A1C167320007EE86F /* CenterZoomPresentAnimationController.swift */,
 				7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */,
@@ -172,6 +175,7 @@
 				7B4FA84D1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift in Sources */,
 				7BEC68521C10EC210015695D /* CGExtension.swift in Sources */,
 				7BD526531C0FA33E00C267F5 /* AppDelegate.swift in Sources */,
+				7B4FA8631C1A4871007EE86F /* WeakKeeper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
