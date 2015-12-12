@@ -1,8 +1,4 @@
 //
-//  RightSlidePresentAnimationController
-//  abrupt
-//
-//  Created by Maic Lopez Saenz on 12/3/15.
 //  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
 //
 

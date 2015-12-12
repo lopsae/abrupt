@@ -1,44 +1,14 @@
 //
-//  CenterZoomPresentAnimationController
-//  abrupt
-//
-//  Created by Maic Lopez Saenz on 12/3/15.
 //  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
 //
 
 import UIKit
 
 
-class CenterZoomPresentAnimationController: NSObject,
-	UIViewControllerAnimatedTransitioning,
-	UIViewControllerTransitioningDelegate
-{
+class CenterZoomPresentAnimationController: BaseAnimationController {
 
 
-	func animationControllerForPresentedController(
-		presented: UIViewController,
-		presentingController presenting: UIViewController,
-		sourceController source: UIViewController)
-		-> UIViewControllerAnimatedTransitioning?
-	{
-		return self
-	}
-
-
-	func animationControllerForDismissedController(
-		dismissed: UIViewController)
-		-> UIViewControllerAnimatedTransitioning?
-	{
-		return self
-	}
-
-
-	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-		return 0.5
-	}
-
-
-	func animateTransition(context: UIViewControllerContextTransitioning) {
+	override func animateTransition(context: UIViewControllerContextTransitioning) {
 		let fromViewController = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
 		let fromView =	fromViewController.view
 
@@ -80,4 +50,5 @@ class CenterZoomPresentAnimationController: NSObject,
 			animations: animationsBlock,
 			completion: completionBlock)
 	}
+
 }
