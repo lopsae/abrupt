@@ -57,7 +57,6 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 		interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning)
 		-> UIViewControllerInteractiveTransitioning?
 	{
-
 		if transitionInProgress {
 			return self
 		}

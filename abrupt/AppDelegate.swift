@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
-		let initialViewController = ViewController(color: UIColor.grayColor())
+		let initialViewController = ViewController(
+			foreColor: UIColor.grayColor(),
+			backColor: UIColor.whiteColor())
 		initialViewController.navigationItem.title = "Initial"
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
@@ -36,10 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				animated: true,
 				completion: nil)
 		}
-		initialViewController.colorView.addGestureRecognizer(presentGesture)
+		initialViewController.foreView.addGestureRecognizer(presentGesture)
 
 		// Pushed view
-		pushedViewController = ViewController(color: UIColor.redColor())
+		pushedViewController = ViewController(
+			foreColor: UIColor.redColor(),
+			backColor: UIColor.whiteColor())
 		pushedViewController.navigationItem.title = "Pushed"
 		pushedViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Pop",
@@ -49,12 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 
 		// Presented view
-		presentedViewController = ViewController(color: UIColor.magentaColor())
+		presentedViewController = ViewController(
+			foreColor: UIColor.magentaColor(),
+			backColor: UIColor.whiteColor())
 		let dismissGesture = UITapGestureRecognizer(){
 			self.navController.dismissViewControllerAnimated(true,
 				completion: nil)
 		}
-		presentedViewController.colorView.addGestureRecognizer(dismissGesture)
+		presentedViewController.foreView.addGestureRecognizer(dismissGesture)
 
 //		presentedTransitioningDelegate = RightSlidePresentAnimationController()
 		presentedTransitioningDelegate = CenterZoomPresentAnimationController()
@@ -70,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		// Window
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
-		window!.backgroundColor = UIColor.whiteColor()
+		window!.backgroundColor = UIColor.lightGrayColor()
 		window!.rootViewController = navController
 		window!.makeKeyAndVisible()
 		return true
