@@ -71,6 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window!.backgroundColor = UIColor.lightGrayColor()
 		window!.rootViewController = navController
 		window!.makeKeyAndVisible()
+
+		// Slow motion animations
+		// window!.layer.speed = 0.1
 		return true
 	}
 

@@ -99,6 +99,8 @@ extension CGRect {
 	}
 
 
+	//TODO: push methods could be renamed to Inset
+
 	// The `side` methods modify the side of the rect by their name:
 	// * Pushing `x` and `y` increases their value, and decreases `w` and `h`
 	// * Pushing `w` and `h` decreases their value
