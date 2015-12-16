@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  abrupt
-//
-//  Created by Maic Lopez on 12/2/15.
-//  Copyright © 2015 Maic Lopez. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -15,14 +7,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var navController: UINavigationController!
 	var navControllerDelegate: UINavigationControllerDelegate!
 
-	var pushedViewController: ViewController!
-	var presentedViewController: ViewController!
+	var pushedViewController: TestViewController!
+	var presentedViewController: TestViewController!
 	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
-		let initialViewController = ViewController(
+		let initialViewController = TestViewController(
 			foreColor: UIColor.grayColor(),
 			backColor: UIColor.whiteColor())
 		initialViewController.navigationItem.title = "Initial"
@@ -41,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		initialViewController.foreView.addGestureRecognizer(presentGesture)
 
 		// Pushed view
-		pushedViewController = ViewController(
+		pushedViewController = TestViewController(
 			foreColor: UIColor.redColor(),
 			backColor: UIColor.whiteColor())
 		pushedViewController.navigationItem.title = "Pushed"
@@ -53,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 
 		// Presented view
-		presentedViewController = ViewController(
+		presentedViewController = TestViewController(
 			foreColor: UIColor.magentaColor(),
 			backColor: UIColor.whiteColor())
 		let dismissGesture = UITapGestureRecognizer(){

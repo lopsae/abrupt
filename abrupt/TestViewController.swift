@@ -1,14 +1,6 @@
-//
-//  ViewController.swift
-//  abrupt
-//
-//  Created by Maic Lopez on 12/2/15.
-//  Copyright © 2015 Maic Lopez. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+class TestViewController: UIViewController {
 
 	private(set)
 	var foreView: UIView!
@@ -43,13 +35,5 @@ class ViewController: UIViewController {
 		foreView.frame.pushSide(all: margin)
 		backgroundView.frame = view.bounds
 	}
-
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-
 }
 
