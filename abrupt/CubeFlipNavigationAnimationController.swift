@@ -17,7 +17,7 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	enum Direction {	case Right, Left}
 	var direction = Direction.Right
 
-	let navigationController: UINavigationController
+	weak var navigationController: UINavigationController?
 
 	var shouldCompleteTransition = false
 	var transitionInProgress = false
@@ -75,11 +75,11 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 
 	func handlePanGesture() {
 		if !transitionInProgress {
-			let viewCount = navigationController.viewControllers.count
+			let viewCount = navigationController?.viewControllers.count
 			if panGesture.state == .Began && viewCount > 1 {
 				// Start the pop transition!
 				transitionInProgress = true
-				navigationController.popViewControllerAnimated(true)
+				navigationController?.popViewControllerAnimated(true)
 				return
 			}
 		}
