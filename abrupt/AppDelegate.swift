@@ -5,11 +5,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var navController: UINavigationController!
-	var navControllerDelegate: UINavigationControllerDelegate!
-
 	var pushedViewController: TestViewController!
 	var presentedViewController: TestViewController!
-	var presentedTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -48,16 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 		presentedViewController.foreViews.first?.addGestureRecognizer(dismissGesture)
 
-//		presentedTransitioningDelegate = RightSlidePresentAnimationController()
-		presentedTransitioningDelegate = CenterZoomPresentAnimationController()
-		presentedViewController.transitioningDelegate = presentedTransitioningDelegate
+		let centerTransitioning = CenterZoomPresentAnimationController()
+		presentedViewController.transitioningDelegate = centerTransitioning
+		WeakKeeper.keep(centerTransitioning, weakObject: presentedViewController)
 
 		// Navigation
 		navController = UINavigationController()
-		navControllerDelegate = CubeFlipNavigationAnimationController(
+		let navigationDelegate = CubeFlipNavigationAnimationController(
 			navigationController: navController)
+		navController.delegate = navigationDelegate
+		WeakKeeper.keep(navigationDelegate, weakObject: navController)
 
-		navController.delegate = navControllerDelegate
 		navController.pushViewController(initialViewController, animated: false)
 
 		// Window
