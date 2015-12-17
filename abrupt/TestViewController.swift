@@ -2,19 +2,19 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-	private(set) var foreView: UIView!
-	private(set) var backgroundView: UIView!
+	private(set) var foreView: UIView
+	private(set) var backgroundView: UIView
 
-	private(set) var topLayoutView: UIView!
-	private(set) var bottomLayoutView: UIView!
+	private(set) var topLayoutView: UIView
+	private(set) var bottomLayoutView: UIView
 
 
 	init(foreColor: UIColor) {
-		super.init(nibName: nil, bundle: nil)
 		foreView = UIView()
 		backgroundView = UIView()
 		topLayoutView = UIView()
 		bottomLayoutView = UIView()
+		super.init(nibName: nil, bundle: nil)
 
 		foreView.backgroundColor = foreColor
 		backgroundView.backgroundColor = UIColor.whiteColor()
