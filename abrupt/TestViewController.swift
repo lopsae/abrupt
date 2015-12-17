@@ -2,24 +2,34 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-	private(set) var foreView: UIView
-	private(set) var backgroundView: UIView
+	private(set) var foreViews: [UIView]
 
+	private(set) var backgroundView: UIView
 	private(set) var topLayoutView: UIView
 	private(set) var bottomLayoutView: UIView
 
 
-	init(foreColor: UIColor) {
-		foreView = UIView()
+	init(colors: [UIColor]) {
+		foreViews = []
 		backgroundView = UIView()
 		topLayoutView = UIView()
 		bottomLayoutView = UIView()
 		super.init(nibName: nil, bundle: nil)
 
-		foreView.backgroundColor = foreColor
+		for currentColor in colors {
+			let currentView = UIView()
+			currentView.backgroundColor = currentColor
+			foreViews.append(currentView)
+		}
+
 		backgroundView.backgroundColor = UIColor.whiteColor()
 		topLayoutView.backgroundColor = UIColor.lightGrayColor()
 		bottomLayoutView.backgroundColor = UIColor.darkGrayColor()
+	}
+
+
+	convenience init(foreColor: UIColor) {
+		self.init(colors: [foreColor])
 	}
 
 	required init?(coder: NSCoder) {
@@ -32,16 +42,27 @@ class TestViewController: UIViewController {
 		view.addSubview(backgroundView)
 		view.addSubview(bottomLayoutView)
 		view.addSubview(topLayoutView)
-		view.addSubview(foreView)
+
+		for currentView in foreViews {
+			view.addSubview(currentView)
+		}
 	}
 
 
 	override func viewWillLayoutSubviews() {
 		let margin: CGFloat = 2;
-		foreView.frame = view.bounds
-		foreView.frame.pushSide(all: margin)
-		foreView.frame.pushSide(y: topLayoutGuide.length)
-		foreView.frame.pushSide(h: bottomLayoutGuide.length)
+
+		var totalForeFrame = view.bounds
+		totalForeFrame.pushSide(y: topLayoutGuide.length)
+		totalForeFrame.pushSide(h: bottomLayoutGuide.length)
+		var baseForeFrame = totalForeFrame
+		baseForeFrame.h = totalForeFrame.height / CGFloat(foreViews.count)
+
+		for (index, currentView) in foreViews.enumerate() {
+			currentView.frame = baseForeFrame
+			currentView.frame.y += baseForeFrame.height * CGFloat(index)
+			currentView.frame.pushSide(all: margin)
+		}
 
 		backgroundView.frame = view.bounds
 

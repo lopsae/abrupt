@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
-		let initialViewController = TestViewController(foreColor: UIColor.grayColor())
+		let initialViewController = TestViewController(colors: [UIColor.grayColor(), UIColor.brownColor()])
 		initialViewController.navigationItem.title = "Initial"
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				animated: true,
 				completion: nil)
 		}
-		initialViewController.foreView.addGestureRecognizer(presentGesture)
+		initialViewController.foreViews.first?.addGestureRecognizer(presentGesture)
 
 		// Pushed view
 		pushedViewController = TestViewController(foreColor: UIColor.redColor())
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			self.navController.dismissViewControllerAnimated(true,
 				completion: nil)
 		}
-		presentedViewController.foreView.addGestureRecognizer(dismissGesture)
+		presentedViewController.foreViews.first?.addGestureRecognizer(dismissGesture)
 
 //		presentedTransitioningDelegate = RightSlidePresentAnimationController()
 		presentedTransitioningDelegate = CenterZoomPresentAnimationController()
