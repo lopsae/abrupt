@@ -51,8 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		// Navigation
 		navController = UINavigationController()
-		let navigationDelegate = CubeFlipNavigationAnimationController(
-			navigationController: navController)
+		let navigationDelegate = CubeFlipNavigationAnimationController()
 		navController.delegate = navigationDelegate
 		WeakKeeper.keep(navigationDelegate, weakObject: navController)
 

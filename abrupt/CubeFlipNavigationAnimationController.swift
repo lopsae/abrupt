@@ -17,15 +17,13 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	enum Direction {	case Right, Left}
 	var direction = Direction.Right
 
-	weak var navigationController: UINavigationController?
-
 	var shouldCompleteTransition = false
 	var transitionInProgress = false
 	let panGesture: UIPanGestureRecognizer
+	weak var navigationController: UINavigationController?
 
 
-	init(navigationController: UINavigationController) {
-		self.navigationController = navigationController
+	override init() {
 		self.panGesture = UIPanGestureRecognizer()
 		super.init()
 
@@ -70,6 +68,7 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 		animated: Bool)
 	{
 		viewController.view.addGestureRecognizer(panGesture)
+		self.navigationController = navigationController
 	}
 
 
