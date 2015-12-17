@@ -65,6 +65,58 @@ extension CGRect {
 	}
 
 
+	/// Shorthand for the `x` position of the `w` side. Setting this property
+	/// value only modifies `w`.
+	var wx: CGFloat {
+		get {
+			return x + w
+		}
+
+		mutating set {
+			w = newValue - x
+		}
+	}
+
+
+	/// Shorthand for the `y` position of the `h` side. Setting this property
+	/// value only modifies `h`.
+	var hy: CGFloat {
+		get {
+			return y + h
+		}
+
+		mutating set {
+			h = newValue - y
+		}
+	}
+
+
+	/// Returns the same value as `wx`. Setting this property value only
+	/// modifies `x`.
+	var wxTranslate: CGFloat {
+		get {
+			return wx
+		}
+
+		mutating set {
+			x = newValue - w
+		}
+	}
+
+
+	/// Returns the same value as `hy`. Setting this property value only
+	/// modifies `y`.
+	var hyTranslate: CGFloat {
+		get {
+			return hy
+		}
+
+		mutating set {
+			y = newValue - h
+		}
+	}
+
+
 	var centerX: CGFloat {
 		get {
 			return midX

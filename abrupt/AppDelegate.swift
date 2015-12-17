@@ -14,9 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
-		let initialViewController = TestViewController(
-			foreColor: UIColor.grayColor(),
-			backColor: UIColor.whiteColor())
+		let initialViewController = TestViewController(foreColor: UIColor.grayColor())
 		initialViewController.navigationItem.title = "Initial"
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
@@ -33,9 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		initialViewController.foreView.addGestureRecognizer(presentGesture)
 
 		// Pushed view
-		pushedViewController = TestViewController(
-			foreColor: UIColor.redColor(),
-			backColor: UIColor.whiteColor())
+		pushedViewController = TestViewController(foreColor: UIColor.redColor())
 		pushedViewController.navigationItem.title = "Pushed"
 		pushedViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Pop",
@@ -45,9 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 
 		// Presented view
-		presentedViewController = TestViewController(
-			foreColor: UIColor.magentaColor(),
-			backColor: UIColor.whiteColor())
+		presentedViewController = TestViewController(foreColor: UIColor.magentaColor())
 		let dismissGesture = UITapGestureRecognizer(){
 			self.navController.dismissViewControllerAnimated(true,
 				completion: nil)
