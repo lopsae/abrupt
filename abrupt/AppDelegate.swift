@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var navController: UINavigationController!
 	var pushedViewController: TestViewController!
 	var presentedViewController: TestViewController!
+	var collectionViewController: TestCollectionViewController!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -26,6 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				completion: nil)
 		}
 		initialViewController.foreViews.first?.addGestureRecognizer(presentGesture)
+
+		let collectionGesture = UITapGestureRecognizer() {
+			self.navController.presentViewController(self.collectionViewController,
+				animated: true,
+				completion: nil)
+		}
+		initialViewController.foreViews[1].addGestureRecognizer(collectionGesture)
 
 		// Pushed view
 		pushedViewController = TestViewController(foreColor: UIColor.redColor())
@@ -48,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let centerTransitioning = CenterZoomPresentAnimationController()
 		presentedViewController.transitioningDelegate = centerTransitioning
 		WeakKeeper.keep(centerTransitioning, weakObject: presentedViewController)
+
+		// Collection view
+		collectionViewController = TestCollectionViewController()
 
 		// Navigation
 		navController = UINavigationController()
