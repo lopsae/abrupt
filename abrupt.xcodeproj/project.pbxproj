@@ -13,6 +13,7 @@
 		7B4FA8631C1A4871007EE86F /* WeakKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA8621C1A4871007EE86F /* WeakKeeper.swift */; };
 		7B4FA8701C1BCA2D007EE86F /* BaseAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA86F1C1BCA2D007EE86F /* BaseAnimationController.swift */; };
 		7BC1D0B61C239AE500257DB3 /* TestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1D0B51C239AE500257DB3 /* TestCollectionViewController.swift */; };
+		7BC1D0B81C265DBC00257DB3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1D0B71C265DBC00257DB3 /* UIColor.swift */; };
 		7BD526531C0FA33E00C267F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD526521C0FA33E00C267F5 /* AppDelegate.swift */; };
 		7BD526551C0FA33E00C267F5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD526541C0FA33E00C267F5 /* TestViewController.swift */; };
 		7BD5265A1C0FA33E00C267F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD526591C0FA33E00C267F5 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		7B4FA8621C1A4871007EE86F /* WeakKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakKeeper.swift; sourceTree = "<group>"; };
 		7B4FA86F1C1BCA2D007EE86F /* BaseAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAnimationController.swift; sourceTree = "<group>"; };
 		7BC1D0B51C239AE500257DB3 /* TestCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewController.swift; sourceTree = "<group>"; };
+		7BC1D0B71C265DBC00257DB3 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = extensions/UIColor.swift; sourceTree = "<group>"; };
 		7BD5264F1C0FA33E00C267F5 /* abrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = abrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD526521C0FA33E00C267F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BD526541C0FA33E00C267F5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				7BEC68511C10EC210015695D /* CGExtension.swift */,
+				7BC1D0B71C265DBC00257DB3 /* UIColor.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				7BD526551C0FA33E00C267F5 /* TestViewController.swift in Sources */,
 				7BC1D0B61C239AE500257DB3 /* TestCollectionViewController.swift in Sources */,
 				7B4FA84D1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift in Sources */,
+				7BC1D0B81C265DBC00257DB3 /* UIColor.swift in Sources */,
 				7BEC68521C10EC210015695D /* CGExtension.swift in Sources */,
 				7BD526531C0FA33E00C267F5 /* AppDelegate.swift in Sources */,
 				7B4FA8631C1A4871007EE86F /* WeakKeeper.swift in Sources */,

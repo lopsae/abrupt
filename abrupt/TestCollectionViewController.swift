@@ -21,7 +21,7 @@ class TestCollectionViewController:
 	override func viewDidLoad() {
 		self.collectionView?.registerClass(UICollectionViewCell.self,
 			forCellWithReuseIdentifier: cellIdentifier)
-		self.collectionView?.backgroundColor = UIColor.brownColor()
+		self.collectionView?.backgroundColor = UIColor.brownColor().lighten(0.5)
 	}
 
 
@@ -50,9 +50,9 @@ class TestCollectionViewController:
 		let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(cellIdentifier,
 			forIndexPath: indexPath)
 		cell.backgroundView = UIView()
-		cell.backgroundView?.backgroundColor = UIColor.grayColor()
+		cell.backgroundView?.backgroundColor = UIColor.brownColor().lighten(0.3)
 		cell.selectedBackgroundView = UIView()
-		cell.selectedBackgroundView?.backgroundColor = UIColor.redColor()
+		cell.selectedBackgroundView?.backgroundColor = UIColor.brownColor().lighten(0.1)
 		return cell
 	}
 

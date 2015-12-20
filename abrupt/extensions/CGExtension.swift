@@ -1,16 +1,17 @@
-//
-//  CGExtension.swift
-//  abrupt
-//
-//  Created by Maic Lopez on 12/3/15.
-//  Copyright © 2015 Maic Lopez. All rights reserved.
-//
-
 import UIKit
 
 
 public func cgclamp(value: CGFloat, max maxValue: CGFloat, min minValue: CGFloat) -> CGFloat {
 	return CGFloat(fminf(fmaxf(Float(value), Float(minValue)), Float(maxValue)))
+}
+
+
+extension CGFloat {
+
+	mutating func clamp(max maxValue: CGFloat, min minValue: CGFloat) {
+		self = cgclamp(self, max: maxValue, min: minValue)
+	}
+
 }
 
 
