@@ -21,4 +21,9 @@ extension UIColor {
 		return UIColor(red: red, green: green, blue: blue, alpha: alpha)
 	}
 
+
+	func darken(decrement: CGFloat) -> UIColor {
+		return lighten(-decrement)
+	}
+
 }

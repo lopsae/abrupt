@@ -52,7 +52,7 @@ class TestCollectionViewController:
 		cell.backgroundView = UIView()
 		cell.backgroundView?.backgroundColor = UIColor.brownColor().lighten(0.3)
 		cell.selectedBackgroundView = UIView()
-		cell.selectedBackgroundView?.backgroundColor = UIColor.brownColor().lighten(0.1)
+		cell.selectedBackgroundView?.backgroundColor = UIColor.brownColor().darken(0.1)
 		return cell
 	}
 
