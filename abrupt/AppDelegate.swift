@@ -18,10 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			title: "Push",
 			style: .Plain)
 		{
+			[unowned self] in
 			self.navController.pushViewController(self.pushedViewController, animated: true)
 		}
 
 		let presentGesture = UITapGestureRecognizer() {
+			[unowned self] in
 			self.navController.presentViewController(self.presentedViewController,
 				animated: true,
 				completion: nil)
@@ -29,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		initialViewController.foreViews.first?.addGestureRecognizer(presentGesture)
 
 		let collectionGesture = UITapGestureRecognizer() {
+			[unowned self] in
 			self.navController.presentViewController(self.collectionViewController,
 				animated: true,
 				completion: nil)
@@ -42,12 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			title: "Pop",
 			style: .Plain)
 		{
+			[unowned self] in
 			self.navController.popViewControllerAnimated(true)
 		}
 
 		// Presented view
 		presentedViewController = TestViewController(foreColor: UIColor.magentaColor())
 		let dismissGesture = UITapGestureRecognizer(){
+			[unowned self] in
 			self.navController.dismissViewControllerAnimated(true,
 				completion: nil)
 		}
