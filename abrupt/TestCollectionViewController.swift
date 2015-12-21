@@ -29,7 +29,7 @@ class TestCollectionViewController:
 		collectionView: UICollectionView)
 		-> Int
 	{
-		return 1
+		return 2
 	}
 
 
@@ -38,7 +38,7 @@ class TestCollectionViewController:
 		numberOfItemsInSection section: Int)
 		-> Int
 	{
-		return 12
+		return 7
 	}
 
 
@@ -63,7 +63,12 @@ class TestCollectionViewController:
 		sizeForItemAtIndexPath indexPath: NSIndexPath)
 		-> CGSize
 	{
-		return CGSize(width: 200, height: 200)
+		return CGSize(width: 200, height: 100)
+	}
+
+
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
 	}
 
 }
