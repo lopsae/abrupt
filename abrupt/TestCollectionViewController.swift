@@ -19,9 +19,11 @@ class TestCollectionViewController:
 
 
 	override func viewDidLoad() {
-		self.collectionView?.registerClass(UICollectionViewCell.self,
+		collectionView?.registerClass(UICollectionViewCell.self,
 			forCellWithReuseIdentifier: cellIdentifier)
-		self.collectionView?.backgroundColor = UIColor.brownColor().lighten(0.5)
+		collectionView?.backgroundColor = UIColor.brownColor().lighten(0.5)
+		collectionView?.allowsMultipleSelection = true
+
 	}
 
 
@@ -69,6 +71,36 @@ class TestCollectionViewController:
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+	}
+
+
+	/// This method only gets called by user taps in the UI. Calling
+	/// `collectionView.selectItemAtIndexPath` does not trigger a call to this
+	/// method.
+	override func collectionView(collectionView: UICollectionView,
+		didSelectItemAtIndexPath indexPath: NSIndexPath)
+	{
+		var pairedIndexPath = indexPath.indexPathByRemovingLastIndex()
+		if indexPath.row % 2 == 0 {
+			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row + 1)
+		} else {
+			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row - 1)
+		}
+		collectionView.selectItemAtIndexPath(pairedIndexPath,
+			animated: true,
+			scrollPosition: .None)
+	}
+
+
+	override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+		var pairedIndexPath = indexPath.indexPathByRemovingLastIndex()
+		if indexPath.row % 2 == 0 {
+			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row + 1)
+		} else {
+			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row - 1)
+		}
+		collectionView.deselectItemAtIndexPath(pairedIndexPath,
+			animated: true)
 	}
 
 }
