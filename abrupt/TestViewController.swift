@@ -50,6 +50,8 @@ class TestViewController: UIViewController {
 
 
 	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		
 		let margin: CGFloat = 2;
 
 		var totalForeFrame = view.bounds

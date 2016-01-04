@@ -8,11 +8,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var pushedViewController: TestViewController!
 	var presentedViewController: TestViewController!
 	var collectionViewController: TestCollectionViewController!
+	var scrollHeaderViewController: TestScrollHeaderViewController!
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Initial view
-		let initialViewController = TestViewController(colors: [UIColor.grayColor(), UIColor.brownColor()])
+		let initialViewController = TestViewController(colors: [UIColor.grayColor(), UIColor.brownColor(), UIColor.cyanColor()])
 		initialViewController.navigationItem.title = "Initial"
 		initialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: "Push",
@@ -37,6 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				completion: nil)
 		}
 		initialViewController.foreViews[1].addGestureRecognizer(collectionGesture)
+
+		let scrollHeaderGesture = UITapGestureRecognizer() {
+			[unowned self] in
+			self.navController.presentViewController(self.scrollHeaderViewController,
+				animated: true,
+				completion: nil)
+		}
+		initialViewController.foreViews[2].addGestureRecognizer(scrollHeaderGesture)
 
 		// Pushed view
 		pushedViewController = TestViewController(foreColor: UIColor.redColor())
@@ -64,6 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		// Collection view
 		collectionViewController = TestCollectionViewController()
+
+		// ScrollHeader view
+		scrollHeaderViewController = TestScrollHeaderViewController()
 
 		// Navigation
 		navController = UINavigationController()
