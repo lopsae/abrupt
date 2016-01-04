@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7B1E69931C38F0B100B0641A /* TestScrollHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E69921C38F0B100B0641A /* TestScrollHeaderViewController.swift */; };
+		7B1E69951C3B04F700B0641A /* DynamicScrollHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E69941C3B04F700B0641A /* DynamicScrollHeaderView.swift */; };
+		7B1E69971C3B054C00B0641A /* DynamicScrollHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E69961C3B054C00B0641A /* DynamicScrollHeaderView.xib */; };
 		7B35D50C1C0FBEA8001861CE /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B35D50B1C0FBEA8001861CE /* Launch.xib */; };
 		7B4FA84B1C167320007EE86F /* CenterZoomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA84A1C167320007EE86F /* CenterZoomPresentAnimationController.swift */; };
 		7B4FA84D1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		7B1E69921C38F0B100B0641A /* TestScrollHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestScrollHeaderViewController.swift; sourceTree = "<group>"; };
+		7B1E69941C3B04F700B0641A /* DynamicScrollHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicScrollHeaderView.swift; sourceTree = "<group>"; };
+		7B1E69961C3B054C00B0641A /* DynamicScrollHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicScrollHeaderView.xib; sourceTree = "<group>"; };
 		7B35D50B1C0FBEA8001861CE /* Launch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
 		7B4FA84A1C167320007EE86F /* CenterZoomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterZoomPresentAnimationController.swift; sourceTree = "<group>"; };
 		7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeFlipNavigationAnimationController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				7B4FA84C1C1771E0007EE86F /* CubeFlipNavigationAnimationController.swift */,
 				7BC1D0B51C239AE500257DB3 /* TestCollectionViewController.swift */,
 				7B1E69921C38F0B100B0641A /* TestScrollHeaderViewController.swift */,
+				7B1E69941C3B04F700B0641A /* DynamicScrollHeaderView.swift */,
+				7B1E69961C3B054C00B0641A /* DynamicScrollHeaderView.xib */,
 				7BD526591C0FA33E00C267F5 /* Assets.xcassets */,
 				7BD5265E1C0FA33E00C267F5 /* Info.plist */,
 				7B35D50B1C0FBEA8001861CE /* Launch.xib */,
@@ -169,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BD5265A1C0FA33E00C267F5 /* Assets.xcassets in Resources */,
+				7B1E69971C3B054C00B0641A /* DynamicScrollHeaderView.xib in Resources */,
 				7B35D50C1C0FBEA8001861CE /* Launch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +189,7 @@
 			files = (
 				7BEC68571C1247E60015695D /* BlockSelector.swift in Sources */,
 				7BEC68541C110B130015695D /* RightSlidePresentAnimationController.swift in Sources */,
+				7B1E69951C3B04F700B0641A /* DynamicScrollHeaderView.swift in Sources */,
 				7B4FA8701C1BCA2D007EE86F /* BaseAnimationController.swift in Sources */,
 				7B4FA84B1C167320007EE86F /* CenterZoomPresentAnimationController.swift in Sources */,
 				7BD526551C0FA33E00C267F5 /* TestViewController.swift in Sources */,

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DynamicScrollHeaderView" customModule="abrupt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ea4-Yh-yfg" userLabel="BottomView">
+                    <rect key="frame" x="2" y="278" width="396" height="120"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="WYC-gs-Fqp"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vez-K8-whM" userLabel="TopView">
+                    <rect key="frame" x="2" y="2" width="396" height="274"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgO-pX-bes" userLabel="SideFloatingView">
+                    <rect key="frame" x="340" y="250" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="05U-yK-G25"/>
+                        <constraint firstAttribute="height" constant="50" id="nlf-Wi-Uby"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vez-K8-whM" secondAttribute="trailing" constant="2" id="2Od-pb-s0z"/>
+                <constraint firstAttribute="trailing" secondItem="ea4-Yh-yfg" secondAttribute="trailing" constant="2" id="8sG-Fm-vLz"/>
+                <constraint firstItem="EgO-pX-bes" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="AnE-YA-HP1"/>
+                <constraint firstItem="vez-K8-whM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="IXo-4B-2EC"/>
+                <constraint firstItem="ea4-Yh-yfg" firstAttribute="top" secondItem="vez-K8-whM" secondAttribute="bottom" constant="2" id="a41-h8-Nag"/>
+                <constraint firstItem="ea4-Yh-yfg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="b7x-Y7-cc2"/>
+                <constraint firstItem="vez-K8-whM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="doJ-d5-FzA"/>
+                <constraint firstAttribute="bottom" secondItem="EgO-pX-bes" secondAttribute="bottom" priority="750" constant="100" id="oOX-gT-Nn6"/>
+                <constraint firstAttribute="trailing" secondItem="EgO-pX-bes" secondAttribute="trailing" constant="10" id="ouE-Uk-uMC"/>
+                <constraint firstAttribute="bottom" secondItem="ea4-Yh-yfg" secondAttribute="bottom" constant="2" id="sOI-zB-Mhq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

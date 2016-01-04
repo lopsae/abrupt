@@ -6,7 +6,7 @@ class TestScrollHeaderViewController: UIViewController,
 
 	var scrollView: UIScrollView!
 	var contentView: UIView!
-	var headerView: UIView!
+	var headerView: DynamicScrollHeaderView!
 
 	var firstLayout = true
 
@@ -22,8 +22,8 @@ class TestScrollHeaderViewController: UIViewController,
 		scrollView.delegate = self
 		scrollView.addSubview(contentView)
 
-		headerView = UIView()
-		headerView.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.5)
+		let nibObjects = NSBundle.mainBundle().loadNibNamed("DynamicScrollHeaderView", owner: nil, options: nil)
+		headerView = nibObjects.first as! DynamicScrollHeaderView
 		view.addSubview(headerView)
 	}
 
