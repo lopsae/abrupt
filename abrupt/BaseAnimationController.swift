@@ -10,18 +10,18 @@ class BaseAnimationController: NSObject,
 	UIViewControllerAnimatedTransitioning
 {
 
-	func animationControllerForPresentedController(
-		presented: UIViewController,
-		presentingController presenting: UIViewController,
-		sourceController source: UIViewController)
+	func animationController(
+		forPresented presented: UIViewController,
+		presenting: UIViewController,
+		source: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
 		return self
 	}
 
 
-	func animationControllerForDismissedController(
-		dismissed: UIViewController)
+	func animationController(
+		forDismissed dismissed: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
 		return self
@@ -29,13 +29,13 @@ class BaseAnimationController: NSObject,
 
 
 	/// TO OVERRIDE
-	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+	func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
 		return 0.5
 	}
 
 
 	/// TO OVERRIDE
-	func animateTransition(context: UIViewControllerContextTransitioning) {
+	func animateTransition(using context: UIViewControllerContextTransitioning) {
 		fatalError("Method must be overriden in an extending class")
 	}
 

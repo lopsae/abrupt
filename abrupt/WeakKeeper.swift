@@ -17,9 +17,9 @@
 /// references have expired, leaving the keepsake free to be disposed.
 class WeakKeeper {
 
-	static private var keepers = [Keeper]()
+	static fileprivate var keepers = [Keeper]()
 
-	static func keep(keepsake: AnyObject, weakObject: AnyObject?) {
+	static func keep(_ keepsake: AnyObject, weakObject: AnyObject?) {
 		let keeper = Keeper(keepsake: keepsake, weakObject: weakObject)
 		keepers.append(keeper)
 	}

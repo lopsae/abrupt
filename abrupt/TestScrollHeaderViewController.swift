@@ -12,18 +12,18 @@ class TestScrollHeaderViewController: UIViewController,
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = UIColor.cyanColor()
+		view.backgroundColor = UIColor.cyan
 
 		contentView = UIView()
-		contentView.backgroundColor = UIColor.blueColor()
+		contentView.backgroundColor = UIColor.blue
 
 		scrollView = UIScrollView()
 		view.addSubview(scrollView)
 		scrollView.delegate = self
 		scrollView.addSubview(contentView)
 
-		let nibObjects = NSBundle.mainBundle().loadNibNamed("DynamicScrollHeaderView", owner: nil, options: nil)
-		headerView = nibObjects.first as! DynamicScrollHeaderView
+		let nibObjects = Bundle.main.loadNibNamed("DynamicScrollHeaderView", owner: nil, options: nil)
+		headerView = nibObjects!.first as! DynamicScrollHeaderView
 		view.addSubview(headerView)
 	}
 
@@ -50,7 +50,7 @@ class TestScrollHeaderViewController: UIViewController,
 	}
 
 
-	func scrollViewDidScroll(scrollView: UIScrollView) {
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		let minHeaderHeight:CGFloat = 80
 		headerView.frame.h = cgclamp(-scrollView.contentOffset.y,
 			max: view.bounds.width,

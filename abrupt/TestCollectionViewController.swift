@@ -19,16 +19,16 @@ class TestCollectionViewController:
 
 
 	override func viewDidLoad() {
-		collectionView?.registerClass(UICollectionViewCell.self,
+		collectionView?.register(UICollectionViewCell.self,
 			forCellWithReuseIdentifier: cellIdentifier)
-		collectionView?.backgroundColor = UIColor.brownColor().lighten(0.5)
+		collectionView?.backgroundColor = UIColor.brown.lighten(0.5)
 		collectionView?.allowsMultipleSelection = true
 
 	}
 
 
-	override func numberOfSectionsInCollectionView(
-		collectionView: UICollectionView)
+	override func numberOfSections(
+		in collectionView: UICollectionView)
 		-> Int
 	{
 		return 2
@@ -36,7 +36,7 @@ class TestCollectionViewController:
 
 
 	override func collectionView(
-		collectionView: UICollectionView,
+		_ collectionView: UICollectionView,
 		numberOfItemsInSection section: Int)
 		-> Int
 	{
@@ -45,31 +45,31 @@ class TestCollectionViewController:
 
 
 	override func collectionView(
-		collectionView: UICollectionView,
-		cellForItemAtIndexPath indexPath: NSIndexPath)
+		_ collectionView: UICollectionView,
+		cellForItemAt indexPath: IndexPath)
 		-> UICollectionViewCell
 	{
-		let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(cellIdentifier,
-			forIndexPath: indexPath)
+		let cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
+			for: indexPath)
 		cell.backgroundView = UIView()
-		cell.backgroundView?.backgroundColor = UIColor.brownColor().lighten(0.3)
+		cell.backgroundView?.backgroundColor = UIColor.brown.lighten(0.3)
 		cell.selectedBackgroundView = UIView()
-		cell.selectedBackgroundView?.backgroundColor = UIColor.brownColor().darken(0.1)
+		cell.selectedBackgroundView?.backgroundColor = UIColor.brown.darken(0.1)
 		return cell
 	}
 
 
 	func collectionView(
-		collectionView: UICollectionView,
+		_ collectionView: UICollectionView,
 		layout collectionViewLayout: UICollectionViewLayout,
-		sizeForItemAtIndexPath indexPath: NSIndexPath)
+		sizeForItemAt indexPath: IndexPath)
 		-> CGSize
 	{
 		return CGSize(width: 200, height: 100)
 	}
 
 
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
 	}
 
@@ -77,29 +77,32 @@ class TestCollectionViewController:
 	/// This method only gets called by user taps in the UI. Calling
 	/// `collectionView.selectItemAtIndexPath` does not trigger a call to this
 	/// method.
-	override func collectionView(collectionView: UICollectionView,
-		didSelectItemAtIndexPath indexPath: NSIndexPath)
+	override func collectionView(_ collectionView: UICollectionView,
+		didSelectItemAt indexPath: IndexPath)
 	{
-		var pairedIndexPath = indexPath.indexPathByRemovingLastIndex()
+
+		var pairedIndexPath = indexPath
+		pairedIndexPath.removeLast()
 		if indexPath.row % 2 == 0 {
-			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row + 1)
+			pairedIndexPath.append(indexPath.row + 1)
 		} else {
-			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row - 1)
+			pairedIndexPath.append(indexPath.row - 1)
 		}
-		collectionView.selectItemAtIndexPath(pairedIndexPath,
+		collectionView.selectItem(at: pairedIndexPath,
 			animated: true,
-			scrollPosition: .None)
+			scrollPosition: UICollectionViewScrollPosition())
 	}
 
 
-	override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		var pairedIndexPath = indexPath.indexPathByRemovingLastIndex()
+	override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+		var pairedIndexPath = indexPath
+		pairedIndexPath.removeLast()
 		if indexPath.row % 2 == 0 {
-			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row + 1)
+			pairedIndexPath.append(indexPath.row + 1)
 		} else {
-			pairedIndexPath = pairedIndexPath.indexPathByAddingIndex(indexPath.row - 1)
+			pairedIndexPath.append(indexPath.row - 1)
 		}
-		collectionView.deselectItemAtIndexPath(pairedIndexPath,
+		collectionView.deselectItem(at: pairedIndexPath,
 			animated: true)
 	}
 

@@ -11,38 +11,38 @@ class RightSlidePresentAnimationController: NSObject,
 {
 
 
-	func animationControllerForPresentedController(
-		presented: UIViewController,
-		presentingController presenting: UIViewController,
-		sourceController source: UIViewController)
+	func animationController(
+		forPresented presented: UIViewController,
+		presenting: UIViewController,
+		source: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
 		return self
 	}
 
 
-	func animationControllerForDismissedController(
-		dismissed: UIViewController)
+	func animationController(
+		forDismissed dismissed: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
 		return self
 	}
 
 
-	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+	func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
 		return 0.5
 	}
 
 
-	func animateTransition(context: UIViewControllerContextTransitioning) {
-		let fromView = context.viewForKey(UITransitionContextFromViewKey)!
-		let container = context.containerView()!
+	func animateTransition(using context: UIViewControllerContextTransitioning) {
+		let fromView = context.view(forKey: UITransitionContextViewKey.from)!
+		let container = context.containerView
 
-		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-		let toView = toViewController.view
+		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toView = toViewController.view!
 
-		let screenBounds = UIScreen.mainScreen().bounds
-		let finalFrame = context.finalFrameForViewController(toViewController)
+		let screenBounds = UIScreen.main.bounds
+		let finalFrame = context.finalFrame(for: toViewController)
 
 		var initialFrame = finalFrame
 		initialFrame.centerY = screenBounds.centerY
@@ -61,11 +61,11 @@ class RightSlidePresentAnimationController: NSObject,
 			context.completeTransition(true)
 		}
 
-		UIView.animateWithDuration(transitionDuration(context),
+		UIView.animate(withDuration: transitionDuration(using: context),
 			delay: 0,
 			usingSpringWithDamping: 1,
 			initialSpringVelocity: 0.5,
-			options: .TransitionNone,
+			options: UIViewAnimationOptions(),
 			animations: animationsBlock,
 			completion: completionBlock)
 	}

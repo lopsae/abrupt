@@ -2,11 +2,11 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-	private(set) var foreViews: [UIView]
+	fileprivate(set) var foreViews: [UIView]
 
-	private(set) var backgroundView: UIView
-	private(set) var topLayoutView: UIView
-	private(set) var bottomLayoutView: UIView
+	fileprivate(set) var backgroundView: UIView
+	fileprivate(set) var topLayoutView: UIView
+	fileprivate(set) var bottomLayoutView: UIView
 
 
 	init(colors: [UIColor]) {
@@ -22,9 +22,9 @@ class TestViewController: UIViewController {
 			foreViews.append(currentView)
 		}
 
-		backgroundView.backgroundColor = UIColor.whiteColor()
-		topLayoutView.backgroundColor = UIColor.lightGrayColor()
-		bottomLayoutView.backgroundColor = UIColor.darkGrayColor()
+		backgroundView.backgroundColor = UIColor.white
+		topLayoutView.backgroundColor = UIColor.lightGray
+		bottomLayoutView.backgroundColor = UIColor.darkGray
 	}
 
 
@@ -60,7 +60,7 @@ class TestViewController: UIViewController {
 		var baseForeFrame = totalForeFrame
 		baseForeFrame.h = totalForeFrame.height / CGFloat(foreViews.count)
 
-		for (index, currentView) in foreViews.enumerate() {
+		for (index, currentView) in foreViews.enumerated() {
 			currentView.frame = baseForeFrame
 			currentView.frame.y += baseForeFrame.height * CGFloat(index)
 			currentView.frame.pushSide(all: margin)

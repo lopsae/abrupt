@@ -1,7 +1,7 @@
 import UIKit
 
 
-public func cgclamp(value: CGFloat, max maxValue: CGFloat, min minValue: CGFloat) -> CGFloat {
+public func cgclamp(_ value: CGFloat, max maxValue: CGFloat, min minValue: CGFloat) -> CGFloat {
 	return CGFloat(fminf(fmaxf(Float(value), Float(minValue)), Float(maxValue)))
 }
 

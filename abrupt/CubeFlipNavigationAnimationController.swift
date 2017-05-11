@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 
 class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransition,
@@ -14,8 +38,8 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	UINavigationControllerDelegate
 {
 
-	enum Direction {	case Right, Left}
-	var direction = Direction.Right
+	enum Direction {	case right, left}
+	var direction = Direction.right
 
 	var shouldCompleteTransition = false
 	var transitionInProgress = false
@@ -31,28 +55,28 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	}
 
 
-	func navigationController(navigationController: UINavigationController,
-		animationControllerForOperation operation: UINavigationControllerOperation,
-		fromViewController fromVC: UIViewController,
-		toViewController toVC: UIViewController)
+	func navigationController(_ navigationController: UINavigationController,
+		animationControllerFor operation: UINavigationControllerOperation,
+		from fromVC: UIViewController,
+		to toVC: UIViewController)
 		-> UIViewControllerAnimatedTransitioning?
 	{
 		switch operation {
-			case .Push:
-				direction = .Right
+			case .push:
+				direction = .right
 
-			case .Pop:
-				direction = .Left
+			case .pop:
+				direction = .left
 
-			case .None:
+			case .none:
 				break
 		}
 		return self;
 	}
 
 
-	func navigationController(navigationController: UINavigationController,
-		interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning)
+	func navigationController(_ navigationController: UINavigationController,
+		interactionControllerFor animationController: UIViewControllerAnimatedTransitioning)
 		-> UIViewControllerInteractiveTransitioning?
 	{
 		if transitionInProgress {
@@ -63,8 +87,8 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	}
 
 
-	func navigationController(navigationController: UINavigationController,
-		didShowViewController viewController: UIViewController,
+	func navigationController(_ navigationController: UINavigationController,
+		didShow viewController: UIViewController,
 		animated: Bool)
 	{
 		viewController.view.addGestureRecognizer(panGesture)
@@ -75,62 +99,63 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	func handlePanGesture() {
 		if !transitionInProgress {
 			let viewCount = navigationController?.viewControllers.count
-			if panGesture.state == .Began && viewCount > 1 {
+			if panGesture.state == .began && viewCount > 1 {
 				// Start the pop transition!
 				transitionInProgress = true
-				navigationController?.popViewControllerAnimated(true)
+				navigationController?.popViewController(animated: true)
 				return
 			}
 		}
 
 		let parentView = panGesture.view!.superview!
-		let viewTranslation = panGesture.translationInView(parentView)
+		let viewTranslation = panGesture.translation(in: parentView)
 
 		switch panGesture.state {
-			case .Changed:
-				let screenWidth = UIScreen.mainScreen().bounds.width
+			case .changed:
+				let screenWidth = UIScreen.main.bounds.width
 				let completedRatio = cgclamp(viewTranslation.x / screenWidth, max:1.0, min: 0.0)
 				shouldCompleteTransition = completedRatio > 0.5
-				updateInteractiveTransition(completedRatio)
+				update(completedRatio)
 
-			case .Cancelled:
+			case .cancelled:
 				transitionInProgress = false;
-				cancelInteractiveTransition()
+				cancel()
 
-			case .Ended:
+			case .ended:
 				transitionInProgress = false;
 				if shouldCompleteTransition {
-					finishInteractiveTransition()
+					finish()
 				} else {
-					cancelInteractiveTransition()
+					cancel()
 				}
 
-			case .Began, .Failed, .Possible:
+			case .began, .failed, .possible:
 				break
 		}
 	}
 
 
-	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+	func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
 		return 1.0
 	}
 
 
-	func animateTransition(context: UIViewControllerContextTransitioning) {
-		let fromViewController = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-		let fromView =	fromViewController.view
+	func animateTransition(using context: UIViewControllerContextTransitioning) {
+		// TODO: see if UITransitionContextViewControllerKey can be removed
+		let fromViewController = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
+		let fromView =	fromViewController.view!
 
-		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-		let toView = toViewController.view
+		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toView = toViewController.view!
 
 		let mysteryConstant: CGFloat = -0.005
 		var angleDirection: CGFloat
 		switch(direction) {
-			case .Right:
+			case .right:
 				angleDirection = 1.0
 				toView.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
 				fromView.layer.anchorPoint = CGPoint(x: 1, y: 0.5)
-			case .Left:
+			case .left:
 				angleDirection = -1.0
 				toView.layer.anchorPoint = CGPoint(x: 1, y: 0.5)
 				fromView.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
@@ -143,31 +168,31 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 		fromTransform.m34 = mysteryConstant
 		toTransform.m34 = mysteryConstant
 
-		let container = context.containerView()!
-		container.transform = CGAffineTransformMakeTranslation(
-			angleDirection * container.frame.width / 2.0,
-			0)
+		let container = context.containerView
+		container.transform = CGAffineTransform(
+			translationX: angleDirection * container.frame.width / 2.0,
+			y: 0)
 
 		toView.layer.transform = toTransform
 		container.addSubview(toView)
 
 		let animationsBlock = {
-			container.transform = CGAffineTransformMakeTranslation(
-				-angleDirection * container.frame.width / 2.0,
-				0)
+			container.transform = CGAffineTransform(
+				translationX: -angleDirection * container.frame.width / 2.0,
+				y: 0)
 			fromView.layer.transform = fromTransform
 			toView.layer.transform = CATransform3DIdentity
 		}
 
 		let completionBlock = { (finished: Bool) in
-			container.transform = CGAffineTransformIdentity
+			container.transform = CGAffineTransform.identity
 			fromView.layer.transform = CATransform3DIdentity
 			toView.layer.transform = CATransform3DIdentity
 			fromView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 			toView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
 
-			let completed = !context.transitionWasCancelled()
+			let completed = !context.transitionWasCancelled
 			if completed {
 				fromView.removeFromSuperview()
 			} else {
@@ -176,18 +201,19 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 			context.completeTransition(completed)
 		}
 
-		if context.isInteractive() {
-			UIView.animateWithDuration(transitionDuration(context),
+		if context.isInteractive {
+			UIView.animate(withDuration: transitionDuration(using: context),
 				delay: 0,
-				options: .CurveLinear,
+				options: .curveLinear,
 				animations: animationsBlock,
 				completion: completionBlock)
 		} else {
-			UIView.animateWithDuration(transitionDuration(context),
+			UIView.animate(withDuration: transitionDuration(using: context),
 				delay: 0,
 				usingSpringWithDamping: 1,
 				initialSpringVelocity: 0.5,
-				options: .TransitionNone,
+				// TODO can be substituted with []?
+				options: UIViewAnimationOptions(),
 				animations: animationsBlock,
 				completion: completionBlock)
 		}

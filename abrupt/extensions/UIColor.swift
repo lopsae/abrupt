@@ -3,7 +3,7 @@ import UIKit
 
 extension UIColor {
 
-	func lighten(increment: CGFloat) -> UIColor {
+	func lighten(_ increment: CGFloat) -> UIColor {
 		var red: CGFloat = 0
 		var green: CGFloat = 0
 		var blue: CGFloat = 0
@@ -22,7 +22,7 @@ extension UIColor {
 	}
 
 
-	func darken(decrement: CGFloat) -> UIColor {
+	func darken(_ decrement: CGFloat) -> UIColor {
 		return lighten(-decrement)
 	}
 

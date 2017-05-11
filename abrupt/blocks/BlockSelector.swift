@@ -35,14 +35,15 @@ class BlockSelector {
 
 
 	func selector() -> Selector {
-		return "performBlock"
+	// TODO shorter selector?
+		return #selector(BlockSelector.performBlock)
 	}
 
 }
 
 
 extension UIBarButtonItem {
-	convenience init(title: String, style: UIBarButtonItemStyle, action: EmptyBlockType) {
+	convenience init(title: String, style: UIBarButtonItemStyle, action: @escaping EmptyBlockType) {
 		self.init()
 		self.title = title
 		self.style = style
@@ -56,13 +57,13 @@ extension UIBarButtonItem {
 
 
 extension UIGestureRecognizer {
-	convenience init(action: EmptyBlockType) {
+	convenience init(action: @escaping EmptyBlockType) {
 		self.init()
 		addAction(action)
 	}
 
 
-	func addAction(action: EmptyBlockType) {
+	func addAction(_ action: @escaping EmptyBlockType) {
 		let block = BlockSelector(block: action)
 		WeakKeeper.keep(block, weakObject: self)
 		addTarget(block, action: block.selector())

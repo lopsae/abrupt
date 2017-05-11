@@ -8,26 +8,26 @@ import UIKit
 class CenterZoomPresentAnimationController: BaseAnimationController {
 
 
-	override func animateTransition(context: UIViewControllerContextTransitioning) {
-		let fromViewController = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-		let fromView =	fromViewController.view
+	override func animateTransition(using context: UIViewControllerContextTransitioning) {
+		let fromViewController = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
+		let fromView =	fromViewController.view!
 
-		let toViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-		let toView = toViewController.view
+		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toView = toViewController.view!
 
-		let fromInitialFrame = context.initialFrameForViewController(fromViewController)
-		let toFinalFrame = context.finalFrameForViewController(toViewController)
+		let fromInitialFrame = context.initialFrame(for: fromViewController)
+		let toFinalFrame = context.finalFrame(for: toViewController)
 
 		toView.frame = toFinalFrame
 		toView.alpha = 0.5
 
-		let screenBounds = UIScreen.mainScreen().bounds
-		let fromFinalFrame = CGRect(origin: screenBounds.center, size: CGSizeZero)
+		let screenBounds = UIScreen.main.bounds
+		let fromFinalFrame = CGRect(origin: screenBounds.center, size: CGSize.zero)
 
-		let fromSnapshot = fromView.snapshotViewAfterScreenUpdates(false)
+		let fromSnapshot = fromView.snapshotView(afterScreenUpdates: false)!
 		fromSnapshot.frame = fromInitialFrame
 
-		let container = context.containerView()!
+		let container = context.containerView
 		container.addSubview(fromSnapshot)
 		fromViewController.removeFromParentViewController()
 		container.insertSubview(toView, belowSubview: fromSnapshot)
@@ -42,11 +42,11 @@ class CenterZoomPresentAnimationController: BaseAnimationController {
 			context.completeTransition(true)
 		}
 
-		UIView.animateWithDuration(transitionDuration(context),
+		UIView.animate(withDuration: transitionDuration(using: context),
 			delay: 0,
 			usingSpringWithDamping: 1,
 			initialSpringVelocity: 0.5,
-			options: .TransitionNone,
+			options: UIViewAnimationOptions(),
 			animations: animationsBlock,
 			completion: completionBlock)
 	}
