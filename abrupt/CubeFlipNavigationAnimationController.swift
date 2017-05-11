@@ -1,12 +1,6 @@
-//
-//  CubeFlipNavigationAnimationController
-//  abrupt
-//
-//  Created by Maic Lopez Saenz.
-//  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
-//
-
 import UIKit
+
+
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -32,13 +26,15 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-
-class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransition,
+class CubeFlipNavigationAnimationController:
+	UIPercentDrivenInteractiveTransition,
 	UIViewControllerAnimatedTransitioning,
 	UINavigationControllerDelegate
 {
 
-	enum Direction {	case right, left}
+	enum Direction {
+		case right, left
+	}
 	var direction = Direction.right
 
 	var shouldCompleteTransition = false
@@ -48,19 +44,19 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 
 
 	override init() {
-		self.panGesture = UIPanGestureRecognizer()
+		panGesture = UIPanGestureRecognizer()
 		super.init()
 
 		panGesture.addAction(handlePanGesture)
 	}
 
 
-	func navigationController(_ navigationController: UINavigationController,
+	func navigationController(
+		_ navigationController: UINavigationController,
 		animationControllerFor operation: UINavigationControllerOperation,
 		from fromVC: UIViewController,
-		to toVC: UIViewController)
-		-> UIViewControllerAnimatedTransitioning?
-	{
+		to toVC: UIViewController
+	) -> UIViewControllerAnimatedTransitioning? {
 		switch operation {
 			case .push:
 				direction = .right
@@ -75,10 +71,10 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	}
 
 
-	func navigationController(_ navigationController: UINavigationController,
-		interactionControllerFor animationController: UIViewControllerAnimatedTransitioning)
-		-> UIViewControllerInteractiveTransitioning?
-	{
+	func navigationController(
+		_ navigationController: UINavigationController,
+		interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
+	) -> UIViewControllerInteractiveTransitioning? {
 		if transitionInProgress {
 			return self
 		}
@@ -87,10 +83,11 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	}
 
 
-	func navigationController(_ navigationController: UINavigationController,
+	func navigationController(
+		_ navigationController: UINavigationController,
 		didShow viewController: UIViewController,
-		animated: Bool)
-	{
+		animated: Bool
+	) {
 		viewController.view.addGestureRecognizer(panGesture)
 		self.navigationController = navigationController
 	}
@@ -135,12 +132,16 @@ class CubeFlipNavigationAnimationController: UIPercentDrivenInteractiveTransitio
 	}
 
 
-	func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+	func transitionDuration(
+		using transitionContext: UIViewControllerContextTransitioning?
+	) -> TimeInterval {
 		return 1.0
 	}
 
 
-	func animateTransition(using context: UIViewControllerContextTransitioning) {
+	func animateTransition(
+		using context: UIViewControllerContextTransitioning
+	) {
 		// TODO: see if UITransitionContextViewControllerKey can be removed
 		let fromViewController = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
 		let fromView =	fromViewController.view!

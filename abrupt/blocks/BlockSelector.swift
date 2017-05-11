@@ -1,13 +1,6 @@
-//
-//  BlockSelector.swift
-//  abrupt
-//
-//  Created by Maic Lopez on 12/4/15.
-//  Copyright © 2015 Maic Lopez. All rights reserved.
-//
-
 import Foundation
 import UIKit
+
 
 typealias EmptyBlockType = () -> Void
 
@@ -35,8 +28,7 @@ class BlockSelector {
 
 
 	func selector() -> Selector {
-	// TODO shorter selector?
-		return #selector(BlockSelector.performBlock)
+		return #selector(performBlock)
 	}
 
 }
