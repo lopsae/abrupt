@@ -142,11 +142,10 @@ class CubeFlipNavigationAnimationController:
 	func animateTransition(
 		using context: UIViewControllerContextTransitioning
 	) {
-		// TODO: see if UITransitionContextViewControllerKey can be removed
-		let fromViewController = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
+		let fromViewController = context.viewController(forKey: .from)!
 		let fromView =	fromViewController.view!
 
-		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toViewController = context.viewController(forKey: .to)!
 		let toView = toViewController.view!
 
 		let mysteryConstant: CGFloat = -0.005
@@ -162,9 +161,9 @@ class CubeFlipNavigationAnimationController:
 				fromView.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
 		}
 
-		var fromTransform = CATransform3DMakeRotation(angleDirection * CGFloat(M_PI_2),
+		var fromTransform = CATransform3DMakeRotation(angleDirection * .pi / 2,
 			0.0, 1.0, 0.0)
-		var toTransform = CATransform3DMakeRotation(-angleDirection * CGFloat(M_PI_2),
+		var toTransform = CATransform3DMakeRotation(-angleDirection * .pi / 2,
 			0.0, 1.0, 0.0)
 		fromTransform.m34 = mysteryConstant
 		toTransform.m34 = mysteryConstant

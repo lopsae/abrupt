@@ -1,7 +1,3 @@
-//
-//  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
-//
-
 import UIKit
 
 
@@ -9,10 +5,10 @@ class CenterZoomPresentAnimationController: BaseAnimationController {
 
 
 	override func animateTransition(using context: UIViewControllerContextTransitioning) {
-		let fromViewController = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
+		let fromViewController = context.viewController(forKey: .from)!
 		let fromView =	fromViewController.view!
 
-		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toViewController = context.viewController(forKey: .to)!
 		let toView = toViewController.view!
 
 		let fromInitialFrame = context.initialFrame(for: fromViewController)

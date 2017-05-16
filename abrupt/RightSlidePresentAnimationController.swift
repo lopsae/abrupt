@@ -1,7 +1,3 @@
-//
-//  Copyright © 2015 Maic Lopez Saenz. All rights reserved.
-//
-
 import UIKit
 
 
@@ -35,10 +31,10 @@ class RightSlidePresentAnimationController: NSObject,
 
 
 	func animateTransition(using context: UIViewControllerContextTransitioning) {
-		let fromView = context.view(forKey: UITransitionContextViewKey.from)!
+		let fromView = context.view(forKey: .from)!
 		let container = context.containerView
 
-		let toViewController = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
+		let toViewController = context.viewController(forKey: .to)!
 		let toView = toViewController.view!
 
 		let screenBounds = UIScreen.main.bounds
